@@ -1,0 +1,19 @@
+<h1>Index</h1>
+<div class="container">
+	<div class="row">
+		<%= render 'layouts/new_post' %>
+	</div>
+	<div class="row">
+		<% @posts.each do |post|%>
+			<div class="col-sm-12">
+		    <div class="card text-center">
+		      <div class="card-body">
+		        <h4 class="card-title"><%= post.title %></h4>
+		        <p class="card-text"><%= post.body %></p>
+		        <a href="#" class="btn btn-primary">Go somewhere</a>
+		      </div>
+		    </div>
+		  </div>
+		<% end %>
+	</div>
+</div>

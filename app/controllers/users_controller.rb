@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   def show
-  	@user = User.find(params[:id])
+    if current_user.id.to_s == params[:id]
+  	  @user = User.find(params[:id])
+    else
+      redirect_to posts_path
+    end
   end
 
   def new
@@ -13,7 +17,7 @@ class UsersController < ApplicationController
   	if @user.save
   		flash[:success] = "Welcome to my app"
       log_in(@user)
-  		redirect_to @user
+  		redirect_to posts_path
   	else
   		render 'new'
   	end

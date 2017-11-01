@@ -1,0 +1,18 @@
+<h1>#<%= @tag.body %></h1>
+<div class="container">
+	<div class="row">
+		<% @posts.reverse.each do |post|%>
+			<div class="col-sm-12">
+		    <div class="card text-center">
+		      <div class="card-body">
+		        <p class="card-text"><%= post.body %></p>
+		        <% tags = Post.find_by(id: post.id).tags %>
+		        <% tags.each do |tag| %>
+		        	<%= link_to "#{tag.body}", tag_path(tag.id), class: "btn btn-primary" %>
+		        <% end %>
+		      </div>
+		    </div>
+		  </div>
+		<% end %>
+	</div>
+</div>

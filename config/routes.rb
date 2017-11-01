@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'tag/show'
+
   get 'sessions/new'
 
   root              		'static_pages#home'
@@ -11,5 +13,6 @@ Rails.application.routes.draw do
   delete 	'logout'	=>	'sessions#destroy'
   resources :users
   resources :posts
+  resources :tags,  only: [:show]
 
 end

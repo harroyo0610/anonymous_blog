@@ -8,9 +8,11 @@
 			<div class="col-sm-12">
 		    <div class="card text-center">
 		      <div class="card-body">
-		        <h4 class="card-title"><%= post.title %></h4>
 		        <p class="card-text"><%= post.body %></p>
-		        <a href="#" class="btn btn-primary">Go somewhere</a>
+		        <% tags = Post.find_by(id: post.id).tags %>
+		        <% tags.each do |tag| %>
+		        	<%= link_to "#{tag.body}", tag_path(tag.id), class: "btn btn-primary" %>
+		        <% end %>
 		      </div>
 		    </div>
 		  </div>

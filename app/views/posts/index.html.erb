@@ -8,6 +8,14 @@
 			<div class="col-sm-12">
 		    <div class="card text-center">
 		      <div class="card-body">
+		      	<% if post.user_id == current_user.id %>
+			      	<div class="float-right">
+			      		<%= link_to post, method: :delete, data: { confirm: "Are you sure?" } ,class: 'btn btn-danger' do %>
+								  <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+								<% end %>
+			      	</div>
+			    	<% end %>
+
 		        <p class="card-text"><%= post.body %></p>
 		        <% tags = Post.find_by(id: post.id).tags %>
 		        <% tags.each do |tag| %>
@@ -19,3 +27,10 @@
 		<% end %>
 	</div>
 </div>
+<style type="text/css">
+	.float-right{
+		float: right;
+		margin: 10px 10px 0 0 ;
+	}
+
+</style>

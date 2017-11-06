@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
 	def index
+		@user = current_user
 		@posts = Post.all.reverse
 	end
 
@@ -28,6 +29,12 @@ class PostsController < ApplicationController
 
 	def show
 		@user = current_user
+	end
+
+	def destroy
+		Post.find(params[:id]).destroy
+		flash[:success] = "User deleted"
+		redirect_to posts_path
 	end
 
 	private 
